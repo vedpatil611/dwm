@@ -1783,7 +1783,9 @@ setup(void)
 	focus(NULL);
 	
 	/* wallpaper */
-	system("feh --bg-fill ~/Downloads/soul_of_cinder.jpg");
+	char load_wallpaper[128];
+	sprintf(load_wallpaper, "feh --bg-fill %s", wallpaperpath);
+	system(load_wallpaper);
 }
 
 
