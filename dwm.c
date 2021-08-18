@@ -1781,6 +1781,9 @@ setup(void)
 	XSelectInput(dpy, root, wa.event_mask);
 	grabkeys();
 	focus(NULL);
+	
+	/* wallpaper */
+	system("feh --bg-fill ~/Downloads/soul_of_cinder.jpg");
 }
 
 
