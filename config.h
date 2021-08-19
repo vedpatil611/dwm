@@ -10,7 +10,7 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 1;		/* 0 means no systray */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "monospace:size=10" };
@@ -71,6 +71,7 @@ static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%"
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
 static const char *brightnessup[] = {"brightnessctl", "s", "+5%", NULL};
 static const char *brightnessdown[] = {"brightnessctl", "s", "5%-", NULL};
+static const char *screenshot[] = {"scrot", "/home/galactagon/Pictures/screenshots/screenshot_%Y-%m-%d-%T.png", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -106,12 +107,13 @@ static Key keys[] = {
 	TAGKEYS(                        XK_7,                      6)
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
-	{ MODKEY|ShiftMask,             XK_e,      quit,           {0} },
-	{ 0,			XF86XK_AudioLowerVolume, spawn, {.v = downvol } },
-	{ 0,			XF86XK_AudioMute, spawn, {.v = mutevol } },
-	{ 0,			XF86XK_AudioRaiseVolume, spawn, {.v = upvol   } },
+	{ MODKEY|ShiftMask,             XK_e,		quit,           {0} },
+	{ 0,			XF86XK_AudioLowerVolume,	spawn, {.v = downvol } },
+	{ 0,			XF86XK_AudioMute,			spawn, {.v = mutevol } },
+	{ 0,			XF86XK_AudioRaiseVolume,	spawn, {.v = upvol   } },
 	{ MODKEY|ShiftMask,				XK_Right,	spawn,			{.v = brightnessup} },
 	{ MODKEY|ShiftMask,				XK_Left,	spawn,			{.v = brightnessdown} },
+	{ MODKEY,						XK_Print,	spawn,			{.v = screenshot} },
 };
 
 /* button definitions */
