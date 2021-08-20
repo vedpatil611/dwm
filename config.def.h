@@ -73,6 +73,7 @@ static const char *brightnessup[] = {"brightnessctl", "s", "+5%", NULL};
 static const char *brightnessdown[] = {"brightnessctl", "s", "5%-", NULL};
 static const char *screenshot[] = {"scrot", "/home/galactagon/Pictures/screenshots/screenshot_%Y-%m-%d-%T.png", NULL };
 
+#include "movestack.c"
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -80,6 +81,8 @@ static Key keys[] = {
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_Down,   focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_Up,	   focusstack,     {.i = -1 } },
+	{ MODKEY|ShiftMask,             XK_Down,   movestack,      {.i = +1 } },
+	{ MODKEY|ShiftMask,             XK_Up,     movestack,      {.i = -1 } },
 	{ MODKEY,                       XK_i,      incnmaster,     {.i = +1 } },
 	{ MODKEY,                       XK_d,      incnmaster,     {.i = -1 } },
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
