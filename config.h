@@ -69,11 +69,13 @@ static const char *termcmd[]  = { "kitty", NULL };
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
-static const char *brightnessup[] = {"brightnessctl", "s", "+5%", NULL};
-static const char *brightnessdown[] = {"brightnessctl", "s", "5%-", NULL};
-static const char *screenshot[] = {"scrot", "/home/galactagon/Pictures/screenshots/screenshot_%Y-%m-%d-%T.png", NULL };
+static const char *brightnessup[] = { "brightnessctl", "s", "+5%", NULL};
+static const char *brightnessdown[] = { "brightnessctl", "s", "5%-", NULL};
+static const char *screenshot[] = { "scrot", "/home/galactagon/Pictures/screenshots/screenshot_%Y-%m-%d-%T.png", NULL };
+static const char *snip_screenshot[] = { "flameshot", "gui", NULL };
 
-#include "movestack.c"
+#include "movestack.h"
+
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
@@ -117,6 +119,7 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,				XK_Right,	spawn,			{.v = brightnessup} },
 	{ MODKEY|ShiftMask,				XK_Left,	spawn,			{.v = brightnessdown} },
 	{ MODKEY,						XK_Print,	spawn,			{.v = screenshot} },
+	{ MODKEY|ShiftMask,				XK_s,		spawn,			{.v = snip_screenshot } },
 };
 
 /* button definitions */
